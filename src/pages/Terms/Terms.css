@@ -1,0 +1,53 @@
+h5 {
+  font-size: 1.25rem;
+  text-align: center;
+  margin: 40px 0;
+}
+
+.Tabblock > ul {
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 10px 0 50px;
+}
+
+.Tabblock > p {
+  font-size: 1rem;
+  font-weight: 300;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+table thead td {
+  background-color: #eee;
+  font-weight: 400;
+}
+table td {
+  border: 1px solid #000;
+  text-align: center;
+  font-weight: 300;
+}
+.priceTable td {
+  height: 35px;
+  line-height: 35px;
+  width: 20%;
+}
+.stepTable td {
+  width: 33.33%;
+  height: 35px;
+  line-height: 35px;
+}
+.carfulTable td {
+  text-align: left;
+}
+
+.carfulTable thead td {
+  height: 35px;
+  line-height: 35px;
+  padding: 0 0 0 5px;
+}
+.carfulTable tbody td {
+  height: 50px;
+  padding: 5px 0 0 5px;
+}

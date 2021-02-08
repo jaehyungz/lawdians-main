@@ -4,7 +4,7 @@ const GlobalStyles = createGlobalStyle`
     
     a{
         text-decoration:none;
-        color:inherit
+        color:inherit;
     }
     *{
         box-sizing:border-box;

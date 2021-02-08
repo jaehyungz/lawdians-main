@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Buttons from "./Buttons";
 import { con5 } from "../assets/images";
+import useResizeHandler from "../hooks/useResizeHandler";
 
 const DownloadBox = styled.div`
   width: 100%;
@@ -20,6 +21,9 @@ const Container = styled.div`
   @media only screen and (max-width: 1152px) {
     width: 90%;
   }
+  @media only screen and (max-width: 650px) {
+    background-size: 100%;
+  }
 `;
 const Title = styled.h1`
   color: #fff;
@@ -27,14 +31,29 @@ const Title = styled.h1`
   text-align: center;
   font-size: 1.85rem;
   margin-bottom: 35px;
+  word-break: keep-all;
+  @media only screen and (max-width: 650px) {
+    font-size: 1.25rem;
+  }
 `;
 
 function Download() {
+  const { platform } = useResizeHandler();
   return (
     <div>
-      <DownloadBox className="depth6">
+      <DownloadBox id="depth6">
         <Container>
-          <Title>새롭게 출시 된 로디언즈앱에서 모든서비스를 만나보세요!</Title>
+          {platform === "desktop" ? (
+            <Title>
+              새롭게 출시 된 로디언즈앱에서 모든서비스를 만나보세요!
+            </Title>
+          ) : (
+            <Title>
+              새롭게 출시 된 로디언즈앱에서
+              <br /> 모든서비스를 만나보세요!
+            </Title>
+          )}
+
           <Buttons />
         </Container>
       </DownloadBox>

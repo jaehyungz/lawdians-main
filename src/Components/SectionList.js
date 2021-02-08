@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { con1, con2, con3 } from "../assets/images";
 
@@ -23,7 +23,7 @@ const Container = styled.div`
   @media only screen and (max-width: 650px) {
     height: unset;
     flex-direction: ${(props) =>
-      props.direction ? props.direction : "column"};
+      props.direction ? props.direction : "column-reverse"};
     padding: 30px 0;
     background-color: ;
   }
@@ -72,7 +72,6 @@ const Title = styled.h1`
 
 const SubTitle = styled.h2`
   font-size: 1.2rem;
-  height: 29px;
   line-height: 29px;
   letter-spacing: -1px;
   color: #333;
@@ -93,14 +92,19 @@ const Description = styled.p`
     font-size: 0.93rem;
     height: unset;
     line-height: 30px;
+    letter-spacing: -2px;
   }
 `;
 
-function SectionList() {
+function SectionList(props) {
+  const hospital = useRef();
+  const service = useRef();
+  const lawyer = useRef();
+
   return (
     <div>
       <SectionContainer>
-        <Container className="depth2">
+        <Container id="depth2" ref={hospital}>
           <Img src={con1} />
           <Textbox left={70}>
             <Title>안심병원</Title>
@@ -117,7 +121,7 @@ function SectionList() {
         </Container>
       </SectionContainer>
       <SectionContainer bg={"#f6f8ff"}>
-        <Container direction={"column-reverse"} className="depth3">
+        <Container direction={"column"} id="depth3" ref={service}>
           <Textbox>
             <Title>안심의료서비스</Title>
             <SubTitle>의료서비스 전 로디언즈와 함께 나를 지키는 방법!</SubTitle>
@@ -132,7 +136,7 @@ function SectionList() {
         </Container>
       </SectionContainer>
       <SectionContainer>
-        <Container className="depth4">
+        <Container id="depth4" ref={lawyer}>
           <Img src={con3} />
           <Textbox left={70}>
             <Title>안심변호사</Title>

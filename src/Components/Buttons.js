@@ -19,6 +19,8 @@ const Button = styled.button`
   margin-left: ${(props) => props.left};
   @media only screen and (max-width: 500px) {
     width: 40%;
+    height: 50px;
+    line-height: 50px;
   }
 `;
 const I = styled.i`
@@ -35,18 +37,27 @@ const I = styled.i`
     background-position: center center;
   }
 `;
-function Buttons() {
+function Buttons(match) {
+  const platform = navigator.platform;
   const buttonLink = (url) => {
     window.open(url);
   };
+  const platformCheck = () => {
+    if (platform !== "MacIntel") {
+      alert("윈도우 버전이 아닙니다.");
+    }
+  };
+
   return (
     <Container>
       <Button
         right={"5px"}
         onClick={() => {
-          buttonLink(
-            "itms-apps://itunes.apple.com/kr/app/apple-store/1546796443"
-          );
+          platform !== "MacIntel"
+            ? platformCheck()
+            : buttonLink(
+                "itms-apps://itunes.apple.com/kr/app/apple-store/1546796443"
+              );
         }}
       >
         <I bg={appstore} width={123} height={30}></I>

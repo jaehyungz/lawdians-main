@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Link, Route } from "react-router-dom";
 import styled from "styled-components";
 import GlobalStyles from "../../Components/GlobalStyles";
@@ -6,6 +6,8 @@ import Useterms from "./Useterms";
 import Privacy from "./Privacy";
 import ApplyInfo from "./ApplyInfo";
 import Caveat from "./Caveat";
+import useResizeHandler from "../../hooks/useResizeHandler";
+import Header from "../../Components/Header";
 import "./Terms.css";
 const Container = styled.div`
   width: 1152px;
@@ -19,7 +21,7 @@ const Container = styled.div`
 const Linklist = styled.div`
   width: 100%;
   height: 80px;
-  margin: 50px 0;
+  margin: 130px 0;
 `;
 
 const SLink = styled(Link)`
@@ -33,10 +35,10 @@ const SLink = styled(Link)`
   border-bottom: 4px solid #eee;
   cursor: pointer;
   @media only screen and (max-width: 1152px) {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   @media only screen and (max-width: 500px) {
-    font-size: 1rem;
+    font-size: 0.9rem;
     line-height: unset;
     display: flex;
     justify-content: center;
@@ -51,6 +53,7 @@ const SLink = styled(Link)`
 `;
 
 const Terms = ({ location, match }) => {
+  const { platform } = useResizeHandler();
   const matching = location.pathname;
   const searching = location.search;
 
@@ -60,10 +63,14 @@ const Terms = ({ location, match }) => {
     const privacy = document.querySelector(".privacy");
     const applyInfo = document.querySelector(".applyInfo");
     const caveat = document.querySelector(".caveat");
-    {
-      searching === "?Notnav=true"
-        ? linklist.setAttribute("style", "display:none")
-        : linklist.removeAttribute("style");
+    const header = document.querySelector("header");
+
+    if (searching === "?Notnav=true") {
+      header.setAttribute("style", "display:none");
+      linklist.setAttribute("style", "visibility:hidden");
+    } else {
+      linklist.removeAttribute("style");
+      header.removeAttribute("style");
     }
     {
       matching === "/terms/useterms"
@@ -104,14 +111,24 @@ const Terms = ({ location, match }) => {
   return (
     <div>
       <GlobalStyles />
+      <Header match={match} />
       <Container>
         <Linklist className="linklist">
           <SLink to="/terms/useterms" className="useterms">
             이용약관
           </SLink>
-          <SLink to="/terms/privacy" className="privacy">
-            개인정보처리방침
-          </SLink>
+          {platform === "desktop" ? (
+            <SLink to="/terms/privacy" className="privacy">
+              개인정보처리방침
+            </SLink>
+          ) : (
+            <SLink to="/terms/privacy" className="privacy">
+              개인정보
+              <br />
+              처리방침
+            </SLink>
+          )}
+
           <SLink to="/terms/applyInfo" className="applyInfo">
             신청안내
           </SLink>

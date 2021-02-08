@@ -1,8 +1,7 @@
 import Router from "./Components/Router";
-import Footer from "./Components/Footer";
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{ position: "relative" }}>
       <Router />
     </div>
   );

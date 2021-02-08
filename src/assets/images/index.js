@@ -15,6 +15,8 @@ import mobilemenu from "./menu-icon-w-m.png";
 import sMobilemenu from "./menu-icon-b-m.png";
 import main_banner_m from "./main_banner_m.jpg";
 import closeIcon from "./close_icon.png";
+import logoTop from "./logo_w.png";
+import logoScroll from "./lawdians-logo-blue.png";
 export {
   bannerbg,
   main_banner_m,
@@ -33,4 +35,6 @@ export {
   mobilemenu,
   sMobilemenu,
   closeIcon,
+  logoTop,
+  logoScroll,
 };

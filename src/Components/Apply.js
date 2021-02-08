@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { con4 } from "../assets/images";
 import { postQuestion } from "../api/question";
+import "../style.css";
 const ApplyBox = styled.div`
   padding-top: 138px;
   width: 100%;
@@ -27,7 +28,7 @@ const Title = styled.h1`
   letter-spacing: -2.25px;
   line-height: 66px;
   margin: 0 0 5px;
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: 650px) {
     font-size: 2rem;
   }
 `;
@@ -38,7 +39,7 @@ const SubTitle = styled.h2`
   letter-spacing: -1px;
   text-align: center;
   margin: 0 0 58px 0;
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: 650px) {
     font-size: 1rem;
   }
 `;
@@ -56,6 +57,7 @@ const Select = styled.select`
   letter-spacing: -0.8px;
   color: #fff;
   background: transparent;
+  padding: 0 10px;
   @media only screen and (max-width: 1152px) {
     width: 24%;
     float: unset;
@@ -65,7 +67,7 @@ const Select = styled.select`
   }
 `;
 const Option = styled.option`
-  background-color: transparent;
+  color: #000;
 `;
 const Input = styled.input`
   width: 280px;
@@ -76,8 +78,9 @@ const Input = styled.input`
   font-size: 1rem;
   letter-spacing: -0.8px;
   color: #fff;
-  background: transparent;
+  background-color: transparent !important;
   margin-left: 10px;
+  padding: 0 10px;
   @media only screen and (max-width: 1152px) {
     width: 24%;
     float: unset;
@@ -89,6 +92,7 @@ const Input = styled.input`
     margin: 10px 0;
   }
 `;
+
 const Textarea = styled.textarea`
   margin: 13px 0 0 0;
   width: 100%;
@@ -98,7 +102,7 @@ const Textarea = styled.textarea`
   height: 100px;
   resize: none;
   font-size: 1rem;
-  padding: 5px 0 0 5px;
+  padding: 10px 0 0 10px;
   background: transparent;
   border: 1px solid #fff;
   font-family: "Noto Sans";
@@ -109,13 +113,21 @@ const Textarea = styled.textarea`
     font-size: 1rem;
   }
 `;
+const Privacy = styled.div`
+  height: 44px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  @media only screen and (max-width: 500px) {
+    justify-content: flex-start;
+  }
+`;
 const Checkbox = styled.input`
-  float: right;
   width: 24px;
   height: 24px;
-  margin-top: 20px;
   background: transparent;
   border: 1px solid #fff;
+  margin-right: 10px;
 `;
 const Label = styled.label`
   font-weight: 400;
@@ -123,11 +135,14 @@ const Label = styled.label`
   font-size: 1rem;
   letter-spacing: -0.8px;
   float: right;
-  margin-top: 23px;
-  margin-left: 10px;
+
   @media only screen and (max-width: 500px) {
     font-size: 0.98rem;
   }
+`;
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 const Button = styled.input`
   width: 200px;
@@ -140,8 +155,12 @@ const Button = styled.input`
   font-size: 1.25rem;
   cursor: pointer;
   margin-top: 50px;
+  clear: both;
+  outline: none;
   @media only screen and (max-width: 500px) {
     margin-top: 30px;
+    height: 50px;
+    line-height: 50px;
   }
 `;
 
@@ -187,14 +206,14 @@ function Apply() {
     if (!hospital || hospital.length < 0) {
       return alert("병원(회사)명을 입력해주세요");
     }
-    if (!phonenumber || phonenumber.length < 6) {
-      return alert("연락처를 입력해주세요");
+    if (!phonenumber || phonenumber.length < 11) {
+      return alert("연락처를 확인해주세요.");
     }
     if (!message || message.length === "") {
       return alert("메세지를 입력해주세요.");
     }
     if (!checkvalue || checkvalue === false) {
-      return alert("약관동의를 해주세요");
+      return alert("개인정보 수집 및 이용에 동의해주세요");
     }
 
     try {
@@ -206,7 +225,7 @@ function Apply() {
         message,
       });
       alert("제휴신청이 완료되었습니다.");
-      console.log(result);
+      //setInputs({ value: "" });
     } catch (e) {
       console.log(e);
       alert(e);
@@ -214,7 +233,7 @@ function Apply() {
   };
 
   return (
-    <ApplyBox className="depth5">
+    <ApplyBox id="depth5">
       <Container>
         <Title>제휴신청</Title>
         <SubTitle>로디언즈와 함께할 안심병원/안심변호사를 모집합니다!</SubTitle>
@@ -240,6 +259,7 @@ function Apply() {
             onChange={inputHandler}
           />
           <Input
+            type="number"
             name="phonenumber"
             placeholder="연락처"
             value={phonenumber}
@@ -251,16 +271,18 @@ function Apply() {
             value={message}
             onChange={inputHandler}
           />
-          <div style={{ height: "44px" }}>
-            <Label htmlfor="checkvalue">개인정보 수집/이용에 동의합니다.</Label>
+          <Privacy>
             <Checkbox
               name="checkvalue"
               type="checkbox"
               onChange={checkedHandler}
               checked={checkvalue}
             />
-          </div>
-          <Button type="submit" value="제휴 신청" />
+            <Label htmlfor="checkvalue">개인정보 수집/이용에 동의합니다.</Label>
+          </Privacy>
+          <ButtonContainer>
+            <Button type="submit" value="제휴 신청" />
+          </ButtonContainer>
         </Form>
       </Container>
     </ApplyBox>

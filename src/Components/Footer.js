@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { snsB, snsF, snsI, snsT, snsY } from "../assets/images";
 const Footerbox = styled.footer`
   width: 100%;

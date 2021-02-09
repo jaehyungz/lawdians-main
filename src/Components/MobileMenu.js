@@ -100,9 +100,9 @@ function MobileMenu({ visible, closeMMenu }) {
           <Mitem href="/#depth3" onClick={closeMMenu}>
             안심의료서비스
           </Mitem>
-          <Mitem href="/#depth4" onClick={closeMMenu}>
+          {/* <Mitem href="/#depth4" onClick={closeMMenu}>
             안심변호사
-          </Mitem>
+          </Mitem> */}
           <Mitem href="/#depth5" onClick={closeMMenu}>
             제휴신청
           </Mitem>

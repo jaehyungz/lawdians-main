@@ -16,7 +16,7 @@ const Container = styled.div`
   width: 1152px;
   margin: 0 auto;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: space-between;
   @media only screen and (max-width: 1152px) {
     width: 90%;
@@ -37,6 +37,7 @@ const Title = styled.h3`
   font-weight: 400;
   letter-spacing: -1px;
   color: #333;
+  cursor: pointer;
 `;
 const StyledLink = styled(Link)`
   font-size: 1.25rem;
@@ -54,7 +55,14 @@ const Description = styled.p`
     font-size: 0.8rem;
   }
 `;
+const Sub = styled.span`
+  font-size: 0.75rem;
+  color: #4a64f5;
+  line-height: unset;
+  word-break: keep-all;
+`;
 const Sns = styled.ul`
+  align-self: flex-end;
   @media only screen and (max-width: 650px) {
     display: flex;
     width: 100%;
@@ -81,14 +89,18 @@ const Item = styled.li`
 `;
 
 function Footer() {
-  const instaPage = (url) => {
+  const snsPage = (url) => {
     window.open(url);
+  };
+
+  const onCall = () => {
+    document.location.href = "tel:1833-8603";
   };
   return (
     <Footerbox>
       <Container>
         <Textbox right={"77px"}>
-          <Title>고객상담 1833-8603</Title>
+          <Title onClick={onCall}>고객상담 1833-8603</Title>
           <Description>
             평일 10:00~18:00 <br /> 점심시간 12:30~13:30
             <br /> (토요일, 일요일, 공휴일 휴무)
@@ -99,38 +111,46 @@ function Footer() {
         <Textbox>
           <StyledLink to="/terms/useterms">약관모음</StyledLink>
           <Description>
+            <Sub>
+              로디언즈는 그 어떠한 병원 및 변호사에게 소개 및 알선 행위를 하지
+              않으며, 그 어떠한 대가도 받지 않음을 알려드립니다!
+            </Sub>
+            <br />
             (주)로디언즈 | 대표이사 윤창기 | 서울시 동작구 상도로 369 숭실대학교
-            창신관 16207호
+            창신관 162078호
             <br /> 사업자등록번호 896-87-00606 | 통신판매업 신고번호
             2017-서울동작-0636호
             <br /> 계좌번호 기업은행 071-103006-01-012
-            <br /> ⓒLAWDIANS All rights reserved.
+            <br /> ⓒ LAWDIANS All rights reserved.
           </Description>
         </Textbox>
         <Sns>
           <Item
             bg={snsY}
             onClick={() =>
-              instaPage(
+              snsPage(
                 "https://www.youtube.com/channel/UCsGBQPD4GhXbDI1Z84Izz6A"
               )
             }
           ></Item>
           <Item
             bg={snsI}
-            onClick={() => instaPage("https://www.instagram.com/lawdians/")}
+            onClick={() => {
+              snsPage("https://www.instagram.com/lawdians/");
+            }}
           ></Item>
+
           <Item
             bg={snsF}
-            onClick={() => instaPage("https://www.facebook.com/Lawdians")}
+            onClick={() => snsPage("https://www.facebook.com/Lawdians")}
           ></Item>
           <Item
             bg={snsT}
-            onClick={() => instaPage("https://twitter.com/nettongrung")}
+            onClick={() => snsPage("https://twitter.com/nettongrung")}
           ></Item>
           <Item
             bg={snsB}
-            onClick={() => instaPage("https://blog.naver.com/lawdianskorea")}
+            onClick={() => snsPage("https://blog.naver.com/lawdianskorea")}
           ></Item>
         </Sns>
       </Container>

@@ -27,6 +27,7 @@ table td {
   border: 1px solid #000;
   text-align: center;
   font-weight: 300;
+  word-break: keep-all;
 }
 .priceTable td {
   height: 35px;
@@ -50,4 +51,12 @@ table td {
 .carfulTable tbody td {
   height: 50px;
   padding: 5px 0 0 5px;
+}
+@media only screen and (max-width: 500px) {
+  table td {
+    font-size: 12px;
+  }
+  table tbody .text-line {
+    line-height: 15px;
+  }
 }

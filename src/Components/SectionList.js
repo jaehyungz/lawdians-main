@@ -114,7 +114,7 @@ function SectionList(props) {
             <Description>
               의료 분야별 “전문의”
               <br /> 위급 상황을 대비한 “응급장비보유”
-              <br /> 의료서비스의 최소한의 안전망 “수술실 CCTV”
+              <br /> 의료서비스의 최소의 안전망 “수술실 CCTV”
               <br /> 비양심적 의료행위 “대리수술 예방”
             </Description>
           </Textbox>
@@ -124,18 +124,21 @@ function SectionList(props) {
         <Container direction={"column"} id="depth3" ref={service}>
           <Textbox>
             <Title>안심의료서비스</Title>
-            <SubTitle>의료서비스 전 로디언즈와 함께 나를 지키는 방법!</SubTitle>
+            <SubTitle>
+              의료서비스 전에 로디언즈와 함께 나를 지키는 방법!
+            </SubTitle>
             <Description>
-              만약 발생 될 의료분쟁(소송)을 대비한 “안심변호사” 선임
-              <br /> 로디언즈와 주기적으로 나의 상태 체크 및 “의료기록자료” 보관{" "}
-              <br /> 나의 의료정보를 로디언즈의 “블록체인” 암호화 기술로 안전
-              보관
+              만약에 발생 될 의료분쟁(소송)에 함께 고민하고 대비하며
+              <br />
+              로디언즈와 주기적으로 나의 상태 체크 및 “의료기록자료”보관
+              <br />
+              나의 의료정보를 로디언즈의 “블록체인” 암호화 기술로 안전하게 보관.
             </Description>
           </Textbox>
           <Img src={con2} />
         </Container>
       </SectionContainer>
-      <SectionContainer>
+      {/* <SectionContainer>
         <Container id="depth4" ref={lawyer}>
           <Img src={con3} />
           <Textbox left={70}>
@@ -147,7 +150,7 @@ function SectionList(props) {
             </Description>
           </Textbox>
         </Container>
-      </SectionContainer>
+      </SectionContainer> */}
     </div>
   );
 }

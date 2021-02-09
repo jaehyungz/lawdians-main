@@ -49,7 +49,7 @@ const Img = styled.img`
     min-height: 400px;
   }
 `;
-const Footer = styled.div`
+const Footer = styled(Link)`
   text-align: center;
   height: 50px;
   background-color: #4a64f5;
@@ -57,7 +57,7 @@ const Footer = styled.div`
   align-items: center;
   justify-content: center;
 `;
-const SLink = styled(Link)`
+const Text = styled.p`
   font-size: 1rem;
   color: #fff;
   font-weight: 400;
@@ -83,6 +83,7 @@ function Popup() {
       );
       setPopup(request.data);
       setloading(false);
+
       return request;
     }
     fetchData();
@@ -108,8 +109,8 @@ function Popup() {
                 src={`http://10.88.0.210:5500/image/${popup.thumbnailUrl}`}
               />
             )}
-            <Footer>
-              <SLink to={`/event/${popup.no}`}>자세히 보기</SLink>
+            <Footer to={`/event/${popup.no}`}>
+              <Text>자세히 보기</Text>
             </Footer>
           </Container>
         </div>

@@ -25,8 +25,13 @@ const HeaderContainer = styled.div`
   width: 1152px;
   margin: 0 auto;
   height: 80px;
+  display: flex;
+  align-items: center;
   @media only screen and (max-width: 1152px) {
     width: 90%;
+  }
+  @media only screen and (max-width: 799px) {
+    justify-content: space-between;
   }
 `;
 const Logo = styled.a`
@@ -36,12 +41,9 @@ const Logo = styled.a`
   background-image: url(${(props) => props.bg});
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  display: inline-block;
-  margin: 28px 0 0;
 `;
 const List = styled.ul`
-  float: right;
-  margin: 27px 0 26px 0;
+  margin-left: auto;
   @media only screen and (max-width: 800px) {
     display: none;
   }
@@ -89,7 +91,6 @@ const MMenu = styled.span`
     background-size: contain;
     background-repeat: no-repeat;
     cursor: pointer;
-    margin-top: 30px;
   }
 `;
 
@@ -208,13 +209,13 @@ function Header(match) {
           >
             안심의료서비스
           </Item>
-          <Item
+          {/* <Item
             color={show ? "#000" : "#fff"}
             onClick={Depth4_move}
             href="/#depth4"
           >
             안심변호사
-          </Item>
+          </Item> */}
           <Item
             color={show ? "#000" : "#fff"}
             onClick={Depth5_move}

@@ -17,6 +17,7 @@ import main_banner_m from "./main_banner_m.jpg";
 import closeIcon from "./close_icon.png";
 import logoTop from "./logo_w.png";
 import logoScroll from "./lawdians-logo-blue.png";
+import arrowButton from "./arrow_bottom.png";
 export {
   bannerbg,
   main_banner_m,
@@ -37,4 +38,5 @@ export {
   closeIcon,
   logoTop,
   logoScroll,
+  arrowButton,
 };

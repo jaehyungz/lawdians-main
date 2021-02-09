@@ -67,7 +67,7 @@ const Terms = ({ location, match }) => {
 
     if (searching === "?Notnav=true") {
       header.setAttribute("style", "display:none");
-      linklist.setAttribute("style", "visibility:hidden");
+      linklist.setAttribute("style", "display:none");
     } else {
       linklist.removeAttribute("style");
       header.removeAttribute("style");

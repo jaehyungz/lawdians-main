@@ -1,6 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useReducer } from "react";
 import styled from "styled-components";
-import { con4 } from "../assets/images";
+import { con4, arrowButton } from "../assets/images";
 import { postQuestion } from "../api/question";
 import "../style.css";
 const ApplyBox = styled.div`
@@ -58,6 +58,12 @@ const Select = styled.select`
   color: #fff;
   background: transparent;
   padding: 0 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(${arrowButton});
+  background-repeat: no-repeat;
+  background-position: 95%;
   @media only screen and (max-width: 1152px) {
     width: 24%;
     float: unset;
@@ -177,6 +183,12 @@ function Apply() {
   });
   const { select, name, hospital, phonenumber, message } = inputs;
   const { checkvalue } = checks;
+  const selectRef = useRef();
+  const nameRef = useRef();
+  const hospitalRef = useRef();
+  const numberRef = useRef();
+  const messageRef = useRef();
+  const checkboxRef = useRef();
 
   const inputHandler = (e) => {
     const { value, name } = e.target;
@@ -225,7 +237,14 @@ function Apply() {
         message,
       });
       alert("제휴신청이 완료되었습니다.");
-      //setInputs({ value: "" });
+      setInputs("");
+      setChecks(false);
+      selectRef.current.value = "";
+      nameRef.current.value = "";
+      hospitalRef.current.value = "";
+      numberRef.current.value = "";
+      messageRef.current.value = "";
+      checkboxRef.current.checkvalue = false;
     } catch (e) {
       console.log(e);
       alert(e);
@@ -238,7 +257,12 @@ function Apply() {
         <Title>제휴신청</Title>
         <SubTitle>로디언즈와 함께할 안심병원/안심변호사를 모집합니다!</SubTitle>
         <Form onSubmit={handleSubmit}>
-          <Select name="select" value={select} onChange={inputHandler}>
+          <Select
+            name="select"
+            value={select}
+            onChange={inputHandler}
+            ref={selectRef}
+          >
             <Option value="">문의사항을 선택하세요</Option>
             <Option value="안심병원문의">안심병원문의</Option>
             <Option value="안심변호사문의">안심변호사문의</Option>
@@ -251,12 +275,14 @@ function Apply() {
             placeholder="이름"
             value={name}
             onChange={inputHandler}
+            ref={nameRef}
           />
           <Input
             name="hospital"
             placeholder="병원(회사)명"
             value={hospital}
             onChange={inputHandler}
+            ref={hospitalRef}
           />
           <Input
             type="number"
@@ -264,12 +290,14 @@ function Apply() {
             placeholder="연락처"
             value={phonenumber}
             onChange={inputHandler}
+            ref={numberRef}
           />
           <Textarea
             name="message"
             placeholder="메세지"
             value={message}
             onChange={inputHandler}
+            ref={messageRef}
           />
           <Privacy>
             <Checkbox
@@ -277,6 +305,7 @@ function Apply() {
               type="checkbox"
               onChange={checkedHandler}
               checked={checkvalue}
+              ref={checkboxRef}
             />
             <Label htmlfor="checkvalue">개인정보 수집/이용에 동의합니다.</Label>
           </Privacy>

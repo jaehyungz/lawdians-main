@@ -42,10 +42,12 @@ function ApplyInfo() {
               <td rowSpan="3">안심의료서비스</td>
               <td>1개월</td>
               <td rowSpan="3">전연령</td>
-              <td rowSpan="3">
+              <td rowSpan="3" className="text-line">
                 19세 미만 청소년은 보호자 동의 필요 (비상연락망 기재 필수)
               </td>
-              <td rowSpan="3">서비스 신청 시 최초 1회 일시납 (월납, 연납X)</td>
+              <td rowSpan="3" className="text-line">
+                서비스 신청 시 최초 1회 일시납 (월납, 연납X)
+              </td>
             </tr>
             <tr>
               <td>3개월</td>
@@ -88,22 +90,22 @@ function ApplyInfo() {
           <tbody>
             <tr>
               <td>기본 1개월차</td>
-              <td>3일마다 수술 후 정보 등록 필요</td>
+              <td className="text-line">3일마다 수술 후 정보 등록 필요</td>
               <td>최소 월 9~10회</td>
             </tr>
             <tr>
               <td>추가 2개월차</td>
-              <td>7일마다 수술후 정보 등록 필요</td>
+              <td className="text-line">7일마다 수술후 정보 등록 필요</td>
               <td>최소 월 4회</td>
             </tr>
             <tr>
               <td>추가 3개월차</td>
-              <td>14일마다 수술후 정보 등록 필요</td>
+              <td className="text-line">14일마다 수술후 정보 등록 필요</td>
               <td>최소 월 2회</td>
             </tr>
             <tr>
               <td>추가 4~6개월차</td>
-              <td>월 1회 수술후 정보 등록 필요</td>
+              <td className="text-line">월 1회 수술후 정보 등록 필요</td>
               <td>최소 월 1회</td>
             </tr>
           </tbody>

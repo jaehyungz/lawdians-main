@@ -42,22 +42,25 @@ function Buttons(match) {
   const buttonLink = (url) => {
     window.open(url);
   };
-  const platformCheck = () => {
-    if (platform !== "MacIntel") {
-      alert("윈도우 버전이 아닙니다.");
-    }
-  };
+
+  // const platformCheck = () => {
+  //   if (platform !== "MacIntel") {
+  //     alert("윈도우 버전이 아닙니다.");
+  //   }
+  //   if (platform !== "Mac") {
+  //     alert("윈도우 버전이 아닙니다.");
+  //   }
+  //   alert(platform);
+  // };
 
   return (
     <Container>
       <Button
         right={"5px"}
         onClick={() => {
-          platform !== "MacIntel"
-            ? platformCheck()
-            : buttonLink(
-                "itms-apps://itunes.apple.com/kr/app/apple-store/1546796443"
-              );
+          buttonLink(
+            "https://apps.apple.com/kr/app/%EB%A1%9C%EB%94%94%EC%96%B8%EC%A6%88-%EC%95%B1/id1546796443"
+          );
         }}
       >
         <I bg={appstore} width={123} height={30}></I>
